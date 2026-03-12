@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 const { simpleParser } = require('mailparser');
 const nodemailer = require('nodemailer');
-const session = require('express-session');
+const session = require('cookie-session');
 const crypto = require('crypto');
 const fs = require('fs');
 const multer = require('multer');
@@ -46,17 +46,14 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Session configuration
+// Session configuration (Optimized for Vercel)
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'outlook-ai-secret-key-12345',
-    resave: false,
-    saveUninitialized: true, // Changed to true to ensure session is created
-    cookie: {
-        maxAge: 24 * 60 * 60 * 1000, // 24 hours
-        httpOnly: true,
-        secure: isVercel, // Set to true on Vercel (HTTPS)
-        sameSite: 'lax'
-    }
+    name: 'outlook_session',
+    keys: [process.env.SESSION_SECRET || 'outlook-ai-secret-key-12345'],
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
+    secure: isVercel, 
+    httpOnly: true,
+    sameSite: 'lax'
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
