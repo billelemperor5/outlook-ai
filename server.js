@@ -34,6 +34,7 @@ const upload = multer({
 });
 
 const app = express();
+app.set('trust proxy', 1);
 const port = 3000;
 
 // CORS must be before session
@@ -51,7 +52,7 @@ app.use(session({
     name: 'outlook_session',
     keys: [process.env.SESSION_SECRET || 'outlook-ai-secret-key-12345'],
     maxAge: 24 * 60 * 60 * 1000, // 24 hours
-    secure: isVercel, 
+    secure: false, // Set to false to work reliably through Vercel's proxy
     httpOnly: true,
     sameSite: 'lax'
 }));
