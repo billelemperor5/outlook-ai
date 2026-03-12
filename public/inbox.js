@@ -142,6 +142,7 @@ async function loadEmails(folder, openUid = null) {
         const response = await fetch('/api/emails', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 email: userEmail,
                 folder: folder,
@@ -192,6 +193,7 @@ async function fetchDirectEmail(folder, uid) {
         const response = await fetch('/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({ email: userEmail, folder, uid })
         });
         const data = await response.json();
@@ -295,6 +297,7 @@ async function openEmail(email) {
         const response = await fetch('/api/email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 email: userEmail,
                 folder: currentFolder,
@@ -418,6 +421,7 @@ document.getElementById('deleteSelectedBtn').addEventListener('click', async () 
         const response = await fetch('/api/delete-emails', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 email: userEmail,
                 folder: currentFolder,
@@ -450,6 +454,7 @@ document.getElementById('deleteEmailBtn').addEventListener('click', async () => 
         const response = await fetch('/api/delete-emails', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
             body: JSON.stringify({
                 email: userEmail,
                 folder: currentFolder,
