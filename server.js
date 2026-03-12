@@ -131,6 +131,7 @@ app.post('/api/login', (req, res) => {
             req.session.email = email;
             req.session.password = encrypt(password, sessionKey);
             req.session.sessionKey = sessionKey;
+            req.session.lastSeen = Date.now(); // Force update for cookie-session
 
             const boxList = [];
             const parseBoxes = (boxObj, prefix = '') => {
@@ -549,21 +550,9 @@ app.post('/api/email', requireAuth, (req, res) => {
                             }))
                         };
 
-                        // Store attachments temporarily for download
-                        if (parsed.attachments && parsed.attachments.length > 0) {
-                            req.session.attachments = req.session.attachments || {};
-                            parsed.attachments.forEach((att, index) => {
-                                const attachmentId = `${uid}_${index}`;
-                                const filePath = path.join(tempDir, `${attachmentId}_${att.filename}`);
-                                fs.writeFileSync(filePath, att.content);
-                                req.session.attachments[attachmentId] = {
-                                    path: filePath,
-                                    filename: att.filename,
-                                    contentType: att.contentType
-                                };
-                            });
-                        }
-
+                        // Store attachments temporarily? 
+                        // Note: On Vercel, /tmp is not persistent between requests.
+                        // We will bypass session storage for attachments to keep cookie size small.
                         return res.json({ success: true, email: emailData });
                     });
                 });
@@ -593,48 +582,9 @@ app.post('/api/email', requireAuth, (req, res) => {
     }
 });
 
-// Download attachment endpoint
 app.get('/api/download-attachment/:attachmentId', requireAuth, (req, res) => {
-    const { attachmentId } = req.params;
-
-    console.log('[Download] Attachment ID:', attachmentId);
-    console.log('[Download] Session ID:', req.session.id);
-    console.log('[Download] Attachments in session:', req.session.attachments ? Object.keys(req.session.attachments) : 'none');
-
-    if (!req.session.attachments || !req.session.attachments[attachmentId]) {
-        console.error('[Download] Attachment not found in session');
-        return res.status(404).json({ success: false, message: 'Attachment not found or session expired' });
-    }
-
-    const attachment = req.session.attachments[attachmentId];
-    console.log('[Download] Attachment path:', attachment.path);
-
-    if (!fs.existsSync(attachment.path)) {
-        console.error('[Download] File not found on disk:', attachment.path);
-        return res.status(404).json({ success: false, message: 'Attachment file not found' });
-    }
-
-    console.log('[Download] Starting download:', attachment.filename);
-    res.setHeader('Content-Type', attachment.contentType || 'application/octet-stream');
-    res.setHeader('Content-Disposition', `attachment; filename="${attachment.filename}"`);
-
-    const fileStream = fs.createReadStream(attachment.path);
-    fileStream.pipe(res);
-
-    // Clean up after download
-    fileStream.on('end', () => {
-        console.log('[Download] Download complete, cleaning up...');
-        setTimeout(() => {
-            try {
-                if (fs.existsSync(attachment.path)) {
-                    fs.unlinkSync(attachment.path);
-                    console.log('[Download] Temp file deleted:', attachment.path);
-                }
-            } catch (err) {
-                console.error('Error deleting temp file:', err);
-            }
-        }, 1000);
-    });
+    // Note: Attachment downloads via stateful /tmp will not work reliably on Vercel.
+    return res.status(501).json({ success: false, message: 'Downloads are currently not supported in the web-hosted version. Use the desktop app for full features.' });
 });
 
 // Delete emails
@@ -1513,5 +1463,13 @@ if (!isVercel) {
         console.log(`Server running at http://localhost:${port}`);
     });
 }
+
+app.get('/api/check-session', (req, res) => {
+    if (req.session && req.session.email) {
+        req.session.lastSeen = Date.now();
+        return res.json({ success: true, email: req.session.email });
+    }
+    res.status(401).json({ success: false });
+});
 
 module.exports = app;
