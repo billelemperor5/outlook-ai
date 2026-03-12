@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outlook AI - Recherche IA</title>
+    <link rel="stylesheet" href="ai-search.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="dots-pattern"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <a href="dashboard.html" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                </a>
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                        <rect x="4" y="10" width="32" height="22" rx="3" fill="url(#searchLogoGrad)" />
+                        <path d="M4 13 L20 24 L36 13" stroke="white" stroke-width="2" fill="none" />
+                        <defs>
+                            <linearGradient id="searchLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8b5cf6" />
+                                <stop offset="100%" stop-color="#6d28d9" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Recherche IA</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <span id="userEmail" class="user-email">user@example.com</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="hero-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                        <path d="M11 8a3 3 0 0 1 3 3"></path>
+                    </svg>
+                </div>
+                <h1>Recherche Intelligente</h1>
+                <p>Trouvez vos emails avec l'intelligence artificielle en langage naturel</p>
+            </div>
+
+            <!-- Search Card -->
+            <div class="search-card">
+                <div class="search-input-group">
+                    <div class="search-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.3-4.3"></path>
+                        </svg>
+                    </div>
+                    <input type="text" id="searchQuery"
+                        placeholder="Ex: Trouve les emails de Jean concernant le projet marketing du mois dernier...">
+                    <button id="searchBtn" class="search-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="m22 2-7 20-4-9-9-4Z"></path>
+                            <path d="M22 2 11 13"></path>
+                        </svg>
+                        <span>Rechercher</span>
+                    </button>
+                </div>
+
+                <!-- Quick Examples -->
+                <div class="quick-examples">
+                    <span class="examples-label">Exemples:</span>
+                    <button class="example-chip" data-query="Emails non lus de cette semaine">📬 Non lus cette
+                        semaine</button>
+                    <button class="example-chip" data-query="Emails avec pièces jointes">📎 Avec pièces jointes</button>
+                    <button class="example-chip" data-query="Emails urgents ou importants">⚡ Urgents</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section hidden" id="resultsSection">
+                <!-- AI Summary -->
+                <div class="ai-summary" id="aiSummary">
+                    <div class="summary-icon">🤖</div>
+                    <div class="summary-content">
+                        <h3>Résumé IA</h3>
+                        <p id="summaryText">...</p>
+                    </div>
+                </div>
+
+                <!-- Results List -->
+                <div class="results-header">
+                    <h2>Résultats</h2>
+                    <span class="results-count" id="resultsCount">0 emails trouvés</span>
+                </div>
+                <div class="results-list" id="resultsList">
+                    <!-- Results will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading-state hidden" id="loadingState">
+                <div class="loading-spinner"></div>
+                <p>Recherche en cours avec l'IA...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg>
+                </div>
+                <h3>Commencez votre recherche</h3>
+                <p>Décrivez ce que vous cherchez en langage naturel et l'IA trouvera les emails correspondants.</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="ai-search.js"></script>
+</body>
+
+</html>

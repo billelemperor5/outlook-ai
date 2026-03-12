@@ -1,0 +1,1421 @@
+/* ============================================
+   OUTLOOK AI - INBOX BOLD GRADIENT DESIGN
+   Professional Modern UI
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    --primary-blue: #1e40af;
+    --primary-blue-light: #3b82f6;
+    --accent-orange: #f97316;
+    --accent-red: #ef4444;
+    --accent-green: #10b981;
+
+    --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 30%, #2563eb 70%, #3b82f6 100%);
+
+    --card-bg: #ffffff;
+    --sidebar-bg: rgba(255, 255, 255, 0.95);
+
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+
+    --sidebar-width: 260px;
+    --list-width: 380px;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    overflow: hidden;
+}
+
+/* ============================================
+   BACKGROUND DECORATIONS
+   ============================================ */
+.bg-decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.08;
+}
+
+.shape-1 {
+    width: 600px;
+    height: 600px;
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    top: -200px;
+    right: -200px;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    bottom: -100px;
+    left: 30%;
+}
+
+.dots-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* ============================================
+   INBOX CONTAINER
+   ============================================ */
+.inbox-container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   SIDEBAR
+   ============================================ */
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 16px;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 8px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 20px;
+}
+
+.sidebar-logo .logo-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.sidebar-logo .logo-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.sidebar-logo .logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+/* Compose Button */
+.compose-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: var(--transition);
+}
+
+.compose-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+}
+
+/* Folder List */
+.folder-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.folder-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.folder-item:hover {
+    background: #f3f4f6;
+    color: var(--text-dark);
+}
+
+.folder-item.active {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.folder-item .badge {
+    margin-left: auto;
+    background: #ef4444;
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
+}
+
+.folder-item.active .badge {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    width: 100%;
+    background: transparent;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.back-btn:hover {
+    background: #f3f4f6;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   SIDEBAR OVERLAY (Mobile)
+   ============================================ */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+/* ============================================
+   MAIN AREA
+   ============================================ */
+.main-area {
+    display: flex;
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    height: 100vh;
+}
+
+/* ============================================
+   EMAIL LIST PANEL
+   ============================================ */
+.email-list-panel {
+    width: var(--list-width);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.email-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-left h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.mobile-menu-btn {
+    display: none;
+    padding: 8px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.header-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 10px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.action-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.action-btn.delete-btn:hover {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    margin: 16px 20px;
+    background: #f3f4f6;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    transition: var(--transition);
+}
+
+.search-box:focus-within {
+    background: white;
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+.search-box svg {
+    color: var(--text-light);
+    flex-shrink: 0;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.search-box input::placeholder {
+    color: var(--text-light);
+}
+
+/* Email List */
+.email-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 12px 12px;
+}
+
+/* Email Item */
+.email-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 8px;
+    background: white;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.email-item:hover {
+    background: #f9fafb;
+    border-color: #e5e7eb;
+}
+
+.email-item.active {
+    background: #eff6ff;
+    border-color: var(--primary-blue-light);
+}
+
+.email-item.unread {
+    background: #fefefe;
+    border-left: 3px solid var(--primary-blue-light);
+}
+
+.email-checkbox {
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    cursor: pointer;
+    accent-color: var(--primary-blue-light);
+}
+
+.email-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.email-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.email-sender {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.email-time {
+    font-size: 12px;
+    color: var(--text-light);
+    flex-shrink: 0;
+}
+
+.email-subject {
+    font-size: 13px;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-preview {
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.email-item.unread .email-sender,
+.email-item.unread .email-subject {
+    font-weight: 700;
+}
+
+/* Loading & Empty States */
+.loading-emails,
+.no-emails,
+.error-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.loading-emails svg,
+.no-emails svg,
+.error-message svg {
+    opacity: 0.5;
+    margin-bottom: 16px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e5e7eb;
+    border-top-color: var(--primary-blue-light);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 16px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.retry-btn {
+    margin-top: 16px;
+    padding: 10px 20px;
+    background: var(--primary-blue-light);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ============================================
+   EMAIL READER PANEL
+   ============================================ */
+.email-reader-panel {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Reader Content Area - Takes remaining space */
+.reader-content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+.reader-placeholder {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+.placeholder-icon {
+    width: 100px;
+    height: 100px;
+    background: #f3f4f6;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.placeholder-icon svg {
+    color: var(--text-light);
+}
+
+.reader-placeholder p {
+    font-size: 15px;
+    color: var(--text-muted);
+}
+
+/* Email Reader */
+.email-reader {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.reader-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: white;
+}
+
+.close-reader-btn {
+    padding: 10px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-reader-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.reader-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.reader-action-btn {
+    padding: 10px 14px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.reader-action-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.reader-action-btn.delete:hover {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+/* Reader Content */
+.reader-content {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.reader-meta {
+    padding: 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.reader-meta h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+}
+
+.sender-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.sender-avatar {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--primary-blue-light), var(--primary-blue));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.sender-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.sender-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.email-date {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.recipient-info {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.reader-body {
+    padding: 24px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+.reader-body pre {
+    white-space: pre-wrap;
+    font-family: inherit;
+}
+
+/* Attachments Inline - Outlook Style */
+.email-attachments-inline {
+    padding: 12px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+}
+
+.attachments-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.attachments-list-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    transition: var(--transition);
+    max-width: 280px;
+}
+
+.attachment-item:hover {
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.attachment-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-dark);
+    overflow: hidden;
+}
+
+.attachment-info span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.download-attachment-btn {
+    padding: 4px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.download-attachment-btn:hover {
+    background: #f3f4f6;
+    color: var(--primary-blue);
+}
+
+/* ============================================
+   COMPOSE MODAL
+   ============================================ */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    border-radius: var(--border-radius);
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.compose-modal {
+    max-width: 700px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.modal-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.close-btn {
+    width: 36px;
+    height: 36px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+    color: var(--text-muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.close-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+}
+
+/* Compose Fields */
+.compose-field {
+    display: flex;
+    align-items: center;
+    padding: 12px 24px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.compose-field label {
+    width: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.compose-field input {
+    flex: 1;
+    border: none;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+}
+
+.compose-field input::placeholder {
+    color: var(--text-light);
+}
+
+.cc-bcc-toggle {
+    display: flex;
+    gap: 8px;
+}
+
+.cc-bcc-toggle button {
+    padding: 4px 12px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.cc-bcc-toggle button:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.compose-body {
+    padding: 0;
+}
+
+.compose-body textarea {
+    width: 100%;
+    min-height: 250px;
+    padding: 20px 24px;
+    border: none;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    resize: none;
+    outline: none;
+}
+
+.compose-body textarea::placeholder {
+    color: var(--text-light);
+}
+
+.compose-attachments {
+    padding: 0 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.compose-attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f3f4f6;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.remove-attachment-btn {
+    padding: 4px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+}
+
+.remove-attachment-btn:hover {
+    color: #ef4444;
+}
+
+.compose-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.compose-tools {
+    display: flex;
+    gap: 8px;
+}
+
+.tool-btn {
+    padding: 10px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tool-btn:hover {
+    background: #f3f4f6;
+    color: var(--text-dark);
+}
+
+.send-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.send-btn:hover {
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 1200px) {
+    :root {
+        --list-width: 320px;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --sidebar-width: 0px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        width: 280px;
+    }
+
+    .mobile-menu-btn {
+        display: flex;
+    }
+
+    .main-area {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --list-width: 100%;
+    }
+
+    .main-area {
+        flex-direction: column;
+    }
+
+    .email-list-panel {
+        width: 100%;
+        height: 50vh;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .email-reader-panel {
+        height: 50vh;
+    }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.hidden {
+    display: none !important;
+}
+
+/* ============================================
+   ZOOM CONTROL BAR
+   ============================================ */
+.zoom-control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: linear-gradient(to top, #f8fafc, #ffffff);
+    border-top: 1px solid #e5e7eb;
+    min-height: 38px;
+}
+
+.zoom-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--accent-green);
+    font-weight: 500;
+}
+
+.zoom-status svg {
+    color: var(--accent-green);
+}
+
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.zoom-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.zoom-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+    border-color: #d1d5db;
+}
+
+.zoom-btn:active {
+    background: #d1d5db;
+    transform: scale(0.95);
+}
+
+/* Zoom Slider - Outlook Style */
+.zoom-slider {
+    width: 120px;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #e5e7eb;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.zoom-slider:hover {
+    background: #d1d5db;
+}
+
+.zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 14px;
+    height: 14px;
+    background: var(--primary-blue-light);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    transition: var(--transition);
+}
+
+.zoom-slider::-webkit-slider-thumb:hover {
+    background: var(--primary-blue);
+    transform: scale(1.1);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.zoom-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    background: var(--primary-blue-light);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.zoom-slider::-moz-range-thumb:hover {
+    background: var(--primary-blue);
+}
+
+.zoom-level {
+    min-width: 48px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+}
+
+/* ============================================
+   GLOBAL STATUS BAR - Full Width like Outlook
+   ============================================ */
+.global-status-bar {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    /* Start after sidebar (260px = var(--sidebar-width)) */
+    right: 0;
+    height: 32px;
+    background: linear-gradient(to top, #e8eaed, #f3f4f6);
+    border-top: 1px solid #d1d5db;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    z-index: 1000;
+    font-size: 12px;
+}
+
+.status-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.elements-count {
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.status-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-connected {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--accent-green);
+    font-weight: 500;
+}
+
+.status-connected svg {
+    color: var(--accent-green);
+}
+
+.status-separator {
+    width: 1px;
+    height: 16px;
+    background: #d1d5db;
+    margin: 0 4px;
+}
+
+.view-toggle {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.view-btn {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.view-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.view-btn.active {
+    background: #dbeafe;
+    color: var(--primary-blue-light);
+}
+
+/* Zoom Controls in Status Bar */
+.global-status-bar .zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.global-status-bar .zoom-btn {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.global-status-bar .zoom-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+    border-color: #9ca3af;
+}
+
+.global-status-bar .zoom-btn:active {
+    background: #d1d5db;
+}
+
+.global-status-bar .zoom-slider {
+    width: 100px;
+    height: 3px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: #d1d5db;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.global-status-bar .zoom-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: var(--primary-blue-light);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.global-status-bar .zoom-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: var(--primary-blue-light);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.global-status-bar .zoom-level {
+    min-width: 42px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-dark);
+    background: transparent;
+    padding: 2px 4px;
+    border: none;
+}
+
+/* Adjust inbox container to account for status bar */
+.inbox-container {
+    height: calc(100vh - 32px) !important;
+}
+
+/* Responsive Status Bar */
+@media (max-width: 768px) {
+    .global-status-bar {
+        padding: 0 8px;
+    }
+
+    .global-status-bar .zoom-slider {
+        width: 60px;
+    }
+
+    .status-connected span {
+        display: none;
+    }
+
+    .elements-count {
+        font-size: 11px;
+    }
+
+    .view-toggle {
+        display: none;
+    }
+}
+
+/* ============================================
+   FULL VIEW MODE - Like Outlook Full Screen
+   ============================================ */
+.inbox-container.full-view-mode .sidebar {
+    display: none;
+}
+
+.inbox-container.full-view-mode .email-list-panel {
+    display: none;
+}
+
+.inbox-container.full-view-mode .email-reader-panel {
+    flex: 1;
+    border-left: none;
+}
+
+.inbox-container.full-view-mode .main-area {
+    margin-left: 0;
+}
+
+/* Full View Mode - Show back button */
+.back-to-split-btn {
+    display: none;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: 36px;
+    height: 36px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: var(--transition);
+    z-index: 10;
+}
+
+.back-to-split-btn:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.inbox-container.full-view-mode .back-to-split-btn {
+    display: flex;
+}
+
+/* Adjust reader content area in full view */
+.inbox-container.full-view-mode .reader-content-area {
+    position: relative;
+}
+
+/* Responsive adjustments for full view */
+@media (max-width: 768px) {
+    .inbox-container.full-view-mode .email-reader-panel {
+        width: 100%;
+    }
+
+    /* Status bar starts from left edge on mobile */
+    .global-status-bar {
+        left: 0;
+    }
+}
+
+/* Status bar in full view mode - starts from left edge */
+.inbox-container.full-view-mode~.global-status-bar {
+    left: 0;
+}

@@ -1,0 +1,639 @@
+/* ============================================
+   OUTLOOK AI - AI SEARCH BOLD GRADIENT DESIGN
+   Professional Modern UI
+   ============================================ */
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+    --primary-blue: #1e40af;
+    --primary-blue-light: #3b82f6;
+    --accent-purple: #8b5cf6;
+    --accent-purple-dark: #6d28d9;
+    --accent-orange: #f97316;
+    --accent-green: #10b981;
+
+    --bg-gradient: linear-gradient(135deg, #1e3a8a 0%, #1e40af 30%, #2563eb 70%, #3b82f6 100%);
+
+    --card-bg: #ffffff;
+    --text-dark: #1f2937;
+    --text-muted: #6b7280;
+    --text-light: #9ca3af;
+
+    --border-radius: 16px;
+    --transition: all 0.3s ease;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    position: relative;
+}
+
+/* ============================================
+   BACKGROUND DECORATIONS
+   ============================================ */
+.bg-decoration {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.shape-1 {
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+    top: -200px;
+    right: -100px;
+}
+
+.shape-2 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #f97316, #fbbf24);
+    bottom: -100px;
+    left: -100px;
+}
+
+.shape-3 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, #10b981, #34d399);
+    top: 50%;
+    left: 50%;
+}
+
+.dots-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* ============================================
+   APP CONTAINER
+   ============================================ */
+.app-container {
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #f3f4f6;
+    border-radius: 10px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.back-link:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo svg {
+    width: 36px;
+    height: 36px;
+}
+
+.logo span {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-dark);
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-email {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.hero-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    margin: 0 auto 24px;
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 12px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero-section p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   SEARCH CARD
+   ============================================ */
+.search-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    margin-bottom: 30px;
+}
+
+.search-input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-icon {
+    padding: 14px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    color: var(--text-muted);
+}
+
+.search-input-group input {
+    flex: 1;
+    padding: 16px 20px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-size: 15px;
+    color: var(--text-dark);
+    outline: none;
+    transition: var(--transition);
+}
+
+.search-input-group input:focus {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.search-input-group input::placeholder {
+    color: var(--text-light);
+}
+
+.search-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 28px;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-purple-dark));
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+}
+
+/* Config Section */
+.config-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 16px;
+    margin-top: 16px;
+}
+
+.config-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #f3f4f6;
+    border: none;
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.config-toggle:hover {
+    background: #e5e7eb;
+    color: var(--text-dark);
+}
+
+.config-toggle .chevron {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+}
+
+.config-toggle.active .chevron {
+    transform: rotate(180deg);
+}
+
+.config-panel {
+    margin-top: 16px;
+    padding: 20px;
+    background: #f9fafb;
+    border-radius: 12px;
+}
+
+.config-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.config-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.config-field input,
+.config-field select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-dark);
+    outline: none;
+    transition: var(--transition);
+}
+
+.config-field input:focus,
+.config-field select:focus {
+    border-color: var(--accent-purple);
+}
+
+.save-config-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: var(--accent-green);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.save-config-btn:hover {
+    background: #059669;
+}
+
+/* Quick Examples */
+.quick-examples {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.examples-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.example-chip {
+    padding: 8px 16px;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.example-chip:hover {
+    background: #e5e7eb;
+    border-color: var(--accent-purple);
+}
+
+/* ============================================
+   RESULTS SECTION
+   ============================================ */
+.results-section {
+    margin-top: 30px;
+}
+
+/* AI Summary */
+.ai-summary {
+    display: flex;
+    gap: 16px;
+    padding: 24px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: 24px;
+    border-left: 4px solid var(--accent-purple);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.summary-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+}
+
+.summary-content h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-purple);
+    margin-bottom: 8px;
+}
+
+.summary-content p {
+    font-size: 14px;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+/* Results List */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.results-header h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+
+.results-count {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.results-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.result-item {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.result-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    border-color: var(--accent-purple);
+}
+
+.result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.result-from {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent-purple);
+}
+
+.result-date {
+    font-size: 12px;
+    color: var(--text-light);
+}
+
+.result-subject {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+}
+
+.result-preview {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* No Results Message */
+.no-results {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.no-results p {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.loading-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-state p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.empty-icon {
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+}
+
+.empty-icon svg {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.empty-state h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.6);
+    max-width: 400px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    .app-header {
+        padding: 16px 20px;
+    }
+
+    .main-content {
+        padding: 24px 16px;
+    }
+
+    .hero-section h1 {
+        font-size: 28px;
+    }
+
+    .search-input-group {
+        flex-direction: column;
+    }
+
+    .search-icon {
+        display: none;
+    }
+
+    .search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .config-row {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-examples {
+        justify-content: center;
+    }
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.hidden {
+    display: none !important;
+}

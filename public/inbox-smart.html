@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outlook AI - Inbox Smart</title>
+    <link rel="stylesheet" href="inbox-smart.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Background Decorations -->
+    <div class="bg-decoration">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="dots-pattern"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <a href="dashboard.html" class="back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="m12 19-7-7 7-7"></path>
+                        <path d="M19 12H5"></path>
+                    </svg>
+                </a>
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" fill="none">
+                        <path d="M4 12 L20 22 L36 12 V32 L20 42 L4 32 Z" fill="url(#smartGrad)" opacity="0.3" />
+                        <path d="M8 14 L20 22 L32 14 V28 L20 36 L8 28 Z" fill="url(#smartGrad)" opacity="0.6" />
+                        <path d="M12 16 L20 22 L28 16 V24 L20 30 L12 24 Z" fill="url(#smartGrad)" />
+                        <defs>
+                            <linearGradient id="smartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#10b981" />
+                                <stop offset="100%" stop-color="#059669" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span>Inbox <strong>Smart</strong></span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="refreshBtn" class="refresh-btn" title="Actualiser">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+                        <path d="M3 3v5h5"></path>
+                        <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"></path>
+                        <path d="M16 16h5v5"></path>
+                    </svg>
+                </button>
+                <span id="userEmail" class="user-email">user@example.com</span>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-card total">
+                <div class="stat-icon">📧</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="totalCount">-</span>
+                    <span class="stat-label">Non lus</span>
+                </div>
+            </div>
+            <div class="stat-card today">
+                <div class="stat-icon">🕐</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="todayCount">-</span>
+                    <span class="stat-label">Aujourd'hui</span>
+                </div>
+            </div>
+            <div class="stat-card yesterday">
+                <div class="stat-icon">📅</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="yesterdayCount">-</span>
+                    <span class="stat-label">Hier</span>
+                </div>
+            </div>
+            <div class="stat-card older">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-info">
+                    <span class="stat-value" id="olderCount">-</span>
+                    <span class="stat-label">Plus anciens</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Loading State -->
+            <div id="loadingState" class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Analyse intelligente en cours...</p>
+            </div>
+
+            <!-- Email Sections -->
+            <div id="emailSections" class="email-sections hidden">
+                <!-- Today Section -->
+                <section class="email-section" id="todaySection">
+                    <div class="section-header">
+                        <h2>
+                            <span class="section-icon">🕐</span>
+                            Aujourd'hui
+                        </h2>
+                        <span class="section-count" id="todaySectionCount">0 emails</span>
+                    </div>
+                    <div class="email-grid" id="todayEmails">
+                        <!-- Today emails will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Yesterday Section -->
+                <section class="email-section" id="yesterdaySection">
+                    <div class="section-header">
+                        <h2>
+                            <span class="section-icon">📅</span>
+                            Hier
+                        </h2>
+                        <span class="section-count" id="yesterdaySectionCount">0 emails</span>
+                    </div>
+                    <div class="email-grid" id="yesterdayEmails">
+                        <!-- Yesterday emails will be loaded here -->
+                    </div>
+                </section>
+
+                <!-- Older Section -->
+                <section class="email-section" id="olderSection">
+                    <div class="section-header">
+                        <h2>
+                            <span class="section-icon">⏳</span>
+                            Plus anciens
+                        </h2>
+                        <span class="section-count" id="olderSectionCount">0 emails</span>
+                    </div>
+                    <div class="email-grid" id="olderEmails">
+                        <!-- Older emails will be loaded here -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="empty-state hidden">
+                <div class="empty-icon">✨</div>
+                <h3>Tout est à jour !</h3>
+                <p>Aucun email non lu dans votre boîte de réception.</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalSubject">Sujet</h2>
+                <button id="closeModal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-meta">
+                <div class="meta-row">
+                    <span class="meta-label">De:</span>
+                    <span id="modalFrom">Expéditeur</span>
+                </div>
+                <div class="meta-row">
+                    <span class="meta-label">Date:</span>
+                    <span id="modalDate">Date</span>
+                </div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Email content will be loaded here -->
+            </div>
+            <div class="modal-footer">
+                <button id="openInInbox" class="btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                        <polyline points="15 3 21 3 21 9"></polyline>
+                        <line x1="10" x2="21" y1="14" y2="3"></line>
+                    </svg>
+                    Ouvrir dans Messagerie
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="inbox-smart.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,476 @@
+/* ============================================
+   SHARED LIGHT MODE STYLES
+   Include this file in all HTML pages
+   ============================================ */
+
+/* ============================================
+   LIGHT MODE CSS VARIABLES
+   ============================================ */
+
+[data-theme="light"] {
+    /* Base Colors */
+    --bg-dark: #e5e7eb;
+    --card-bg: #f3f4f6;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
+    --border: #d1d5db;
+    --input-bg: #ffffff;
+
+    /* Glass Effects */
+    --glass-bg: rgba(0, 0, 0, 0.03);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --glass-hover: rgba(0, 0, 0, 0.06);
+
+    /* Custom properties for specific pages */
+    --bg-primary: #e5e7eb;
+    --bg-secondary: #f3f4f6;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+}
+
+/* ============================================
+   INBOX PAGE - LIGHT MODE
+   ============================================ */
+
+[data-theme="light"] .inbox-container {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #e5e7eb 100%);
+}
+
+[data-theme="light"] .sidebar {
+    background: rgba(243, 244, 246, 0.95);
+    border-right-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .sidebar-header .logo {
+    -webkit-text-fill-color: #667eea;
+}
+
+[data-theme="light"] .compose-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+[data-theme="light"] .folder-item {
+    color: #4b5563;
+}
+
+[data-theme="light"] .folder-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #1f2937;
+}
+
+[data-theme="light"] .folder-item.active {
+    background: rgba(102, 126, 234, 0.15);
+    color: #667eea;
+}
+
+[data-theme="light"] .email-list-panel {
+    background: rgba(243, 244, 246, 0.95);
+    border-right-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .email-list-header {
+    background: rgba(243, 244, 246, 0.98);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .email-list-header h2 {
+    color: #1f2937;
+}
+
+[data-theme="light"] .search-box {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .search-box svg {
+    color: #6b7280;
+}
+
+[data-theme="light"] .search-box input {
+    color: #1f2937;
+    background: transparent;
+}
+
+[data-theme="light"] .search-box input::placeholder {
+    color: #9ca3af;
+}
+
+/* EMAIL ITEM - Light Mode Text Colors */
+[data-theme="light"] .email-item {
+    background: rgba(255, 255, 255, 0.6);
+    border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .email-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .email-item.active {
+    background: rgba(102, 126, 234, 0.1);
+}
+
+[data-theme="light"] .email-sender {
+    color: #1f2937;
+}
+
+[data-theme="light"] .email-subject {
+    color: #374151;
+}
+
+[data-theme="light"] .email-preview {
+    color: #6b7280;
+}
+
+[data-theme="light"] .email-time {
+    color: #9ca3af;
+}
+
+[data-theme="light"] .email-item.unread .email-sender,
+[data-theme="light"] .email-item.unread .email-subject {
+    color: #1f2937;
+    font-weight: 600;
+}
+
+[data-theme="light"] .loading-emails {
+    color: #6b7280;
+}
+
+[data-theme="light"] .no-emails {
+    color: #6b7280;
+}
+
+/* EMAIL READER PANEL - Light Mode */
+[data-theme="light"] .email-reader-panel {
+    background: rgba(243, 244, 246, 0.95);
+}
+
+[data-theme="light"] .reader-placeholder {
+    color: #6b7280;
+}
+
+[data-theme="light"] .reader-placeholder p {
+    color: #6b7280;
+}
+
+[data-theme="light"] .reader-header {
+    background: rgba(255, 255, 255, 0.8);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .reader-meta {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, transparent 100%);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .reader-meta h2 {
+    color: #1f2937;
+}
+
+[data-theme="light"] .sender-name {
+    color: #1f2937;
+}
+
+[data-theme="light"] .email-date {
+    color: #6b7280;
+}
+
+[data-theme="light"] .recipient-info {
+    color: #6b7280;
+}
+
+[data-theme="light"] .reader-body {
+    color: #374151;
+}
+
+[data-theme="light"] .back-btn {
+    color: #4b5563;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .back-btn:hover {
+    color: #667eea;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .action-btn {
+    color: #4b5563;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .action-btn:hover {
+    color: #1f2937;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .close-reader-btn {
+    color: #6b7280;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .close-reader-btn:hover {
+    color: #1f2937;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Modal Light Mode */
+[data-theme="light"] .modal-content {
+    background: rgba(243, 244, 246, 0.98);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .modal-header {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .modal-header h2 {
+    color: #1f2937;
+}
+
+[data-theme="light"] .close-btn {
+    color: #6b7280;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .close-btn:hover {
+    color: #1f2937;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .compose-field label {
+    color: #374151;
+}
+
+[data-theme="light"] .compose-field input,
+[data-theme="light"] .compose-field textarea {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1f2937;
+}
+
+/* ============================================
+   TRANSLATE PAGE - LIGHT MODE
+   ============================================ */
+
+[data-theme="light"] .translate-container {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #e5e7eb 100%);
+}
+
+[data-theme="light"] .translate-header {
+    background: rgba(243, 244, 246, 0.95);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .logo-text {
+    color: #1f2937;
+}
+
+[data-theme="light"] .user-email {
+    color: #4b5563;
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .language-bar {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .lang-select {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1f2937;
+}
+
+[data-theme="light"] .panel {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .panel-title {
+    color: #1f2937;
+}
+
+[data-theme="light"] .text-area {
+    background: rgba(255, 255, 255, 0.5);
+    color: #1f2937;
+}
+
+[data-theme="light"] .text-area::placeholder {
+    color: #9ca3af;
+}
+
+[data-theme="light"] .result-area {
+    color: #1f2937;
+}
+
+[data-theme="light"] .char-count,
+[data-theme="light"] .translation-time {
+    color: #6b7280;
+}
+
+[data-theme="light"] .quick-btn {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #374151;
+}
+
+[data-theme="light"] .quick-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .history-section {
+    background: rgba(255, 255, 255, 0.5);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .history-header h3 {
+    color: #1f2937;
+}
+
+[data-theme="light"] .history-item {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .history-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================
+   INBOX SMART PAGE - LIGHT MODE
+   ============================================ */
+
+[data-theme="light"] .smart-container {
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 50%, #e5e7eb 100%);
+}
+
+[data-theme="light"] .smart-header {
+    background: rgba(243, 244, 246, 0.95);
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .stats-bar {
+    background: rgba(243, 244, 246, 0.8);
+}
+
+[data-theme="light"] .stat-item {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .stat-value {
+    color: #1f2937;
+}
+
+[data-theme="light"] .stat-label {
+    color: #6b7280;
+}
+
+[data-theme="light"] .smart-card {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .smart-card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card-header h2 {
+    color: #1f2937;
+}
+
+[data-theme="light"] .card-subtitle {
+    color: #6b7280;
+}
+
+[data-theme="light"] .email-mini-card {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .email-mini-card:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .email-mini-card .sender {
+    color: #1f2937;
+}
+
+[data-theme="light"] .email-mini-card .subject {
+    color: #374151;
+}
+
+[data-theme="light"] .empty-category {
+    color: #9ca3af;
+}
+
+/* ============================================
+   AI SEARCH PAGE - LIGHT MODE
+   ============================================ */
+
+[data-theme="light"] .search-container {
+    background: transparent;
+}
+
+[data-theme="light"] .search-header p {
+    color: #6b7280;
+}
+
+[data-theme="light"] .search-box-container {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .search-input-wrapper input {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1f2937;
+}
+
+[data-theme="light"] .setting-row input,
+[data-theme="light"] .setting-row select {
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(0, 0, 0, 0.15);
+    color: #1f2937;
+}
+
+[data-theme="light"] .result-summary {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="light"] .result-item {
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .result-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="light"] .result-subject {
+    color: #1f2937;
+}
+
+[data-theme="light"] .result-preview {
+    color: #6b7280;
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+
+body,
+.inbox-container,
+.translate-container,
+.smart-container,
+.sidebar,
+.email-list-panel,
+.email-reader-panel,
+.panel,
+.smart-card,
+.modal-content {
+    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
