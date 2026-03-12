@@ -13,6 +13,9 @@ function initDashboard() {
 
     // Load saved settings
     loadSettings();
+    
+    // Check session
+    fetch('/api/check-session', { credentials: 'include' }).catch(e => console.error('Session check failed', e));
 
     // Initialize theme toggle
     initTheme();
