@@ -48,13 +48,13 @@ app.use(express.urlencoded({ extended: true }));
 
 // Session configuration
 app.use(session({
-    secret: crypto.randomBytes(32).toString('hex'),
+    secret: process.env.SESSION_SECRET || 'outlook-ai-secret-key-12345',
     resave: false,
     saveUninitialized: true, // Changed to true to ensure session is created
     cookie: {
         maxAge: 24 * 60 * 60 * 1000, // 24 hours
         httpOnly: true,
-        secure: false, // Set to true if using HTTPS
+        secure: isVercel, // Set to true on Vercel (HTTPS)
         sameSite: 'lax'
     }
 }));
